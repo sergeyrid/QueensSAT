@@ -37,8 +37,7 @@ def main():
                     diag_clause = [-cur_index, -get_index(n, i + k, j + k)]
                     clauses.append(diag_clause)
     with Minisat22(bootstrap_with=clauses) as solver:
-        solved = solver.solve()
-        if solved:
+        if solver.solve():
             model = solver.get_model()
             for i in range(n):
                 for j in range(n):
